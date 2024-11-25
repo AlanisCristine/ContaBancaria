@@ -1,19 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ContaBancaria
+namespace ContaBancaria.Entidade
 {
+    [Table("ContaCorrente")]
     public class ContaCorrente : Conta
     {
-        public double LimiteDeCredito { get; set; }
+        public decimal LimiteDeCredito { get; set; }
 
-        public ContaCorrente(string Titular, double Saldo, double LimiteDecredito)
-            : base(Titular, Saldo)
+        public ContaCorrente(int Id, string Titular, decimal Saldo, decimal LimiteDecredito)
+            : base(Id,Titular, Saldo)
         {
             LimiteDeCredito = LimiteDecredito;
+        }
+
+        public ContaCorrente()
+        {
+
         }
 
         public void ExibirInformacoes()
@@ -25,26 +32,26 @@ namespace ContaBancaria
         }
 
 
-        public void Depositar(double valor)
+        public void Depositar(decimal valor)
         {
-            double resultado = valor + Saldo;
+            decimal resultado = valor + Saldo;
             Console.WriteLine($"O resultado do depósito com o saldo é:{resultado}");
 
         }
-        public bool Sacar(double valor)
+        public bool Sacar(decimal valor)
         {
-            if(Saldo < 0 || Saldo < valor)
+            if (Saldo < 0 || Saldo < valor)
             {
                 Console.WriteLine("Impossível sacar esse valor.");
                 return false;
             }
             else
             {
-                double resultado = Saldo - valor;
+                decimal resultado = Saldo - valor;
                 return true;
-                
+
             }
-            
+
         }
     }
 }

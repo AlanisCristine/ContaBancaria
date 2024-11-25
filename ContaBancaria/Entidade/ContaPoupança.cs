@@ -1,21 +1,27 @@
-﻿using System;
+﻿using Dapper.Contrib.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ContaBancaria
+namespace ContaBancaria.Entidade
 {
+    [Table("ContaPoupanca")]
     public class ContaPoupança : Conta
     {
-        public double TaxaDeJuros { get; set; }
+        public decimal TaxaDeJuros { get; set; }
 
-        public ContaPoupança(string Titular, double Saldo, double taxa)
-            : base(Titular, Saldo)
+        public ContaPoupança(int Id, string Titular, decimal Saldo, decimal taxa)
+            : base(Id,Titular, Saldo)
         {
             TaxaDeJuros = taxa;
         }
 
+        public ContaPoupança()
+        {
+
+        }
         public void ExibirInformacoes()
         {
             Console.WriteLine($"Titular:{Titular}");
@@ -23,21 +29,21 @@ namespace ContaBancaria
             Console.WriteLine($"Tipo de conta:Conta Poupança");
 
         }
-        public void Depositar(double valor)
+        public void Depositar(decimal valor)
         {
-            double resultado = valor + Saldo;
+            decimal resultado = valor + Saldo;
 
-            TaxaDeJuros = 0.5;
+            TaxaDeJuros = 2;
 
             if (Saldo > 10)
             {
-                double resultadoFinal = resultado + TaxaDeJuros;
+                decimal resultadoFinal = resultado + TaxaDeJuros;
                 Console.WriteLine($"O valor é de {resultadoFinal}");
             }
 
         }
 
-        public bool Sacar(double valor)
+        public bool Sacar(decimal valor)
         {
             if (Saldo < 0 || Saldo < valor)
             {
@@ -46,7 +52,7 @@ namespace ContaBancaria
             }
             else
             {
-                double resultado = Saldo - valor;
+                decimal resultado = Saldo - valor;
                 return true;
 
             }

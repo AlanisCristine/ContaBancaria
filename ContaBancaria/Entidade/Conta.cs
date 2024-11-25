@@ -5,29 +5,35 @@ using System.Text;
 using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
 
-namespace ContaBancaria
+namespace ContaBancaria.Entidade
 {
-    public class Conta: IConta
+    public class Conta : IConta
     {
-        public Conta(string titular, double saldo)
+        public Conta(int id, string titular, decimal saldo)
         {
             Titular = titular;
             Saldo = saldo;
+            Id = id;
         }
+        public Conta()
+        {
 
+        }
+        public int Id { get; set; }
         public string Titular { get; set; }
-        public double Saldo { get; set; }
+        public decimal Saldo { get; set; }
+
         public override string ToString()
         {
             return $"Titular: {Titular}, Saldo: {Saldo}";
         }
 
-        public void Depositar(double valor)
+        public void Depositar(decimal valor)
         {
             Console.WriteLine("Qual foi o valor depositado?");
-            double deposito = double.Parse(Console.ReadLine());
+            decimal deposito = decimal.Parse(Console.ReadLine());
             Console.WriteLine($"R${deposito} depositado com sucesso");
-            
+
         }
 
         public void ExibirInformacoes()
@@ -35,10 +41,10 @@ namespace ContaBancaria
             Console.WriteLine($"Titular:{Titular}");
             Console.WriteLine($"Saldo: {Saldo}");
             Console.WriteLine($"Tipo de conta:");
-           
+
         }
 
-        public bool Sacar(double valor)
+        public bool Sacar(decimal valor)
         {
             if (Saldo < 0 || Saldo < valor)
             {
@@ -47,17 +53,17 @@ namespace ContaBancaria
             }
             else
             {
-                double resultado = Saldo - valor;
+                decimal resultado = Saldo - valor;
                 return true;
 
             }
 
         }
 
-        public void Transferir(double valor, IConta contaDestino)
+        public void Transferir(decimal valor, IConta contaDestino)
         {
-          this.Sacar(valor);
-            contaDestino.Depositar(valor);
+            Sacar(valor);
+            contaDestino.Depositar((decimal)valor);
         }
     }
 }

@@ -2,9 +2,9 @@
 {
     public interface IConta
     {
-        void Depositar(double valor);
-        bool Sacar(double valor);
-        void Transferir(double valor, IConta contaDestino);
+        void Depositar(decimal valor);
+        bool Sacar(decimal valor);
+        void Transferir(decimal valor, IConta contaDestino);
         void ExibirInformacoes();
 
     }
