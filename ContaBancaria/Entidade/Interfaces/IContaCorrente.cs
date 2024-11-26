@@ -8,10 +8,11 @@ namespace ContaBancaria.Entidade.Interfaces
 {
     public interface IContaCorrente
     {
-        public void Adicionar(ContaCorrente carro);
-        public void Remover(int id);
-        public void Editar(ContaCorrente carrinho);
-        public List<ContaCorrente> Listar();
-        public ContaCorrente BuscarPorId(int id);
+        void Adicionar(ContaPoupanca carro);
+        void Remover(int id);
+        void Editar(ContaPoupanca carrinho);
+        List<ContaPoupanca> Listar();
+        ContaPoupanca BuscarPorId(int id);
+        string ExibirInformacoes(int id);
     }
 }

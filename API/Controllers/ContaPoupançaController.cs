@@ -26,12 +26,18 @@ namespace API.Controllers
             return _service.Listar();
         }
 
+        [HttpGet("Exibir-Informacoes-Conta-Poupança")]
+        public string ExibirInformacoes(int id)
+        {
+            return _service.ExibirInformacoes(id);
+        }
 
         [HttpPut("Editar-Conta-Poupança")]
         public void EditarCarrinho(ContaPoupança p)
         {
             _service.Editar(p);
         }
+
         [HttpDelete("Deletar-Conta-Poupança")]
         public void DeletarCarrinho(int id)
         {

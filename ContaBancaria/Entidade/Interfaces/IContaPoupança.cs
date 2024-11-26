@@ -8,10 +8,11 @@ namespace ContaBancaria.Entidade.Interfaces
 {
     public  interface IContaPoupança
     {
-        public void Adicionar(ContaPoupança carro);
-        public void Remover(int id);
-        public void Editar(ContaPoupança carrinho);
-        public List<ContaPoupança> Listar();
-        public ContaPoupança BuscarPorId(int id);
+        void Adicionar(ContaPoupança carro);
+        void Remover(int id);
+        void Editar(ContaPoupança carrinho);
+        List<ContaPoupança> Listar();
+        ContaPoupança BuscarPorId(int id);
+        string ExibirInformacoes(int id);
     }
 }

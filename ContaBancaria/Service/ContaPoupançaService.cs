@@ -32,6 +32,11 @@ namespace ContaBancaria.Service
             repository.Editar(editPessoa);
         }
 
+        public string ExibirInformacoes(int id)
+        {
+            return repository.ExibirInformacoes(id);
+        }
+
         public List<ContaPoupança> Listar()
         {
             return repository.Listar();

@@ -9,10 +9,11 @@ namespace ContaBancaria.Service.Interfces
 {
     public interface IContaPoupançaService
     {
-        public void Adicionar(ContaPoupança carrinho);
-        public ContaPoupança BuscarTimePorId(int id);
-        public void Editar(ContaPoupança editPessoa);
-        public List<ContaPoupança> Listar();
-        public void Remover(int id);
+         void Adicionar(ContaPoupança carrinho);
+         ContaPoupança BuscarTimePorId(int id);
+         void Editar(ContaPoupança editPessoa);
+        List<ContaPoupança> Listar();
+        void Remover(int id);
+        string ExibirInformacoes(int id);
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
@@ -36,13 +37,17 @@ namespace ContaBancaria.Entidade
 
         }
 
-        public void ExibirInformacoes()
-        {
-            Console.WriteLine($"Titular:{Titular}");
-            Console.WriteLine($"Saldo: {Saldo}");
-            Console.WriteLine($"Tipo de conta:");
+     
 
+        public virtual string ExibirInformacoes()
+        {
+            string MensagemExibirDetalhes = $"Titular:{Titular}" +
+            $"\n Saldo: {Saldo}";
+           
+
+            return MensagemExibirDetalhes;
         }
+
 
         public bool Sacar(decimal valor)
         {
@@ -65,5 +70,7 @@ namespace ContaBancaria.Entidade
             Sacar(valor);
             contaDestino.Depositar((decimal)valor);
         }
+
+        
     }
 }

@@ -9,10 +9,11 @@ namespace ContaBancaria.Service.Interfces
 {
     public interface IContaCorrenteService
     {
-        public void Adicionar(ContaCorrente carrinho);
-        public ContaCorrente BuscarTimePorId(int id);
-        public void Editar(ContaCorrente editPessoa);
-        public List<ContaCorrente> Listar();
-        public void Remover(int id);
+         void Adicionar(ContaPoupanca carrinho);
+         ContaPoupanca BuscarTimePorId(int id);
+         void Editar(ContaPoupanca editPessoa);
+         List<ContaPoupanca> Listar();
+         void Remover(int id);
+        string ExibirInformacoes(int id);
     }
 }

@@ -46,5 +46,12 @@ namespace ContaBancaria.Repository
             using var connection = new SQLiteConnection(ConnectionString);
             return connection.Get<ContaPoupança>(id);
         }
+
+        public string ExibirInformacoes(int id)
+        {
+            using var connection = new SQLiteConnection(ConnectionString);
+            ContaPoupança carrinho = BuscarPorId(id);
+            return carrinho.ExibirInformacoes();
+        }
     }
 }

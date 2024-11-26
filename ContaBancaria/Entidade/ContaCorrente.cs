@@ -8,27 +8,30 @@ using System.Threading.Tasks;
 namespace ContaBancaria.Entidade
 {
     [Table("ContaCorrente")]
-    public class ContaCorrente : Conta
+    public class ContaPoupanca : Conta
     {
         public decimal LimiteDeCredito { get; set; }
 
-        public ContaCorrente(int Id, string Titular, decimal Saldo, decimal LimiteDecredito)
+        public ContaPoupanca(int Id, string Titular, decimal Saldo, decimal LimiteDecredito)
             : base(Id,Titular, Saldo)
         {
             LimiteDeCredito = LimiteDecredito;
         }
 
-        public ContaCorrente()
+        public ContaPoupanca()
         {
 
         }
 
-        public void ExibirInformacoes()
+       
+        public override string ExibirInformacoes()
         {
-            Console.WriteLine($"Titular:{Titular}");
-            Console.WriteLine($"Saldo: {Saldo}");
-            Console.WriteLine($"Tipo de conta:Conta Corrente");
+            string mensagemDetalhes = base.ExibirInformacoes();
+            mensagemDetalhes +=
+                 $"Titular:{Titular}" 
+                  + $"\nSaldo: {Saldo}";
 
+            return mensagemDetalhes;
         }
 
 

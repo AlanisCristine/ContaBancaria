@@ -20,32 +20,37 @@ namespace ContaBancaria.Repository
             ConnectionString = config.GetConnectionString("DefaultConnection");
         }
 
-        public void Adicionar(ContaCorrente carro)
+        public void Adicionar(ContaPoupanca carro)
         {
             using var connection = new SQLiteConnection(ConnectionString);
-            connection.Insert<ContaCorrente>(carro);
+            connection.Insert<ContaPoupanca>(carro);
         }
         public void Remover(int id)
         {
             using var connection = new SQLiteConnection(ConnectionString);
-            ContaCorrente carrinho = BuscarPorId(id);
-            connection.Delete<ContaCorrente>(carrinho);
+            ContaPoupanca carrinho = BuscarPorId(id);
+            connection.Delete<ContaPoupanca>(carrinho);
         }
-        public void Editar(ContaCorrente carrinho)
+        public void Editar(ContaPoupanca carrinho)
         {
             using var connection = new SQLiteConnection(ConnectionString);
-            connection.Update<ContaCorrente>(carrinho);
+            connection.Update<ContaPoupanca>(carrinho);
         }
-        public List<ContaCorrente> Listar()
+        public List<ContaPoupanca> Listar()
         {
             using var connection = new SQLiteConnection(ConnectionString);
-            return connection.GetAll<ContaCorrente>().ToList();
+            return connection.GetAll<ContaPoupanca>().ToList();
         }
-        public ContaCorrente BuscarPorId(int id)
+        public ContaPoupanca BuscarPorId(int id)
         {
             using var connection = new SQLiteConnection(ConnectionString);
-            return connection.Get<ContaCorrente>(id);
+            return connection.Get<ContaPoupanca>(id);
         }
-
+        public string ExibirInformacoes(int id)
+        {
+            using var connection = new SQLiteConnection(ConnectionString);
+            ContaPoupanca carrinho = BuscarPorId(id);
+            return carrinho.ExibirInformacoes();
+        }
     }
 }

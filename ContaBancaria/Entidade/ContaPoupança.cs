@@ -22,12 +22,15 @@ namespace ContaBancaria.Entidade
         {
 
         }
-        public void ExibirInformacoes()
-        {
-            Console.WriteLine($"Titular:{Titular}");
-            Console.WriteLine($"Saldo: {Saldo}");
-            Console.WriteLine($"Tipo de conta:Conta Poupança");
 
+        public override string ExibirInformacoes()
+        {
+            string mensagemDetalhes = base.ExibirInformacoes();
+            mensagemDetalhes +=
+                 $"Titular:{Titular}"
+                  + $"\nSaldo: {Saldo}";
+
+            return mensagemDetalhes;
         }
         public void Depositar(decimal valor)
         {
